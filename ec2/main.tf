@@ -1,4 +1,8 @@
+module "ec2" {
+  source = "../ec2"
+}
 
+##ec2
 resource "aws_key_pair" "default" {
   key_name	= "key.${var.resource_name}"
   public_key	= var.public_key_value
@@ -9,7 +13,7 @@ resource "aws_key_pair" "default" {
 
 resource "aws_instance" "bastion" {
   ami				= var.bastion_ami_id
-  instance_type 		= var.bastion_type
+  instance_type 	= var.bastion_type
   subnet_id			= var.sub_pub2a_id
   key_name			= aws_key_pair.default.key_name
   associate_public_ip_address	= "true"

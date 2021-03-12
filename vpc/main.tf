@@ -1,3 +1,6 @@
+module "vpc" {
+  source = "../vpc"
+}
 
 ##VPC
 resource "aws_vpc" "default" {
