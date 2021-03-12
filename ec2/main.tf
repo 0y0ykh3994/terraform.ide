@@ -1,6 +1,3 @@
-module "ec2" {
-  source = "../ec2"
-}
 
 ##ec2
 resource "aws_key_pair" "default" {
