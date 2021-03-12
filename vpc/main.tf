@@ -1,5 +1,5 @@
 module "vpc" {
-  source = "../"
+  source = "git::https://github.com/0y0ykh3994/terraform.ide.git//vpc?ref=master"
 }
 
 ##VPC
