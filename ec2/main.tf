@@ -1,5 +1,5 @@
 module "ec2" {
-  source = "git::https://github.com/0y0ykh3994/terraform.ide.git//ec2?ref=master"
+  source = "../"
 }
 
 resource "aws_key_pair" "default" {
