@@ -1,5 +1,5 @@
 module "ec2" {
-  source = "../"
+  source = "./"
 }
 
 resource "aws_key_pair" "default" {
