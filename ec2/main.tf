@@ -20,7 +20,7 @@ resource "aws_key_pair" "default" {
 resource "aws_instance" "bastion" {
   ami				= var.bastion_ami_id
   instance_type 	= var.bastion_type
-  subnet_id			= data.terraform_remote_state.vpc.outputs.vpc_id
+  subnet_id			= data.terraform_remote_state.vpc.outputs.subnet_id
   key_name			= aws_key_pair.default.key_name
   associate_public_ip_address	= "true"
   vpc_security_group_ids = [aws_security_group.bastion.id]
