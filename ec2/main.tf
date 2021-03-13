@@ -1,3 +1,12 @@
+data "terraform_remote_state" "vpc" {
+  backend = "s3"
+
+  config = {
+    bucket = var.bucket
+    region = var.region
+    key    = var.key
+  }
+}
 
 ##ec2
 resource "aws_key_pair" "default" {
@@ -11,7 +20,7 @@ resource "aws_key_pair" "default" {
 resource "aws_instance" "bastion" {
   ami				= var.bastion_ami_id
   instance_type 	= var.bastion_type
-  subnet_id			= var.sub_pub2a_id
+  subnet_id			= data.terraform_remote_state.vpc.outputs.vpc_id
   key_name			= aws_key_pair.default.key_name
   associate_public_ip_address	= "true"
   vpc_security_group_ids = [aws_security_group.bastion.id]
